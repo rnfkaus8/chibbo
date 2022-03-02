@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Getter
 public class Member {
@@ -17,17 +19,17 @@ public class Member {
 
     private String memberNickname;
 
-//    @ManyToOne
-//    @JoinColumn(name = "company_no")
-//    private Company interestCompany;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "work_company_no")
+    private Company workCompany;
 
-//    @ManyToOne
-//    @JoinColumn(name = "job_large_no")
-//    private Long jobLargeNo;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "job_small_no")
-//    private Long jobSmallNo;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "interest_company_no")
+    private Company interestCompany;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "job_category_no")
+    private JobCategory interestJobCategory;
 
     @Enumerated(EnumType.STRING)
     private MemberStatus isWorker;
