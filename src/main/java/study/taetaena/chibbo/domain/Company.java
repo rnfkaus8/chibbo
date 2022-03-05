@@ -12,7 +12,11 @@ public class Company {
 
     @Id
     @Column(name = "company_no")
-    private String companyNo;
+    @GeneratedValue
+    private Long companyNo;
+
+
+    private String companyRegNum;
 
     private String companyName;
 
